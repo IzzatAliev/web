@@ -21,7 +21,9 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void create(Course entity) {}
+    public void create(Course entity) {
+        courseDao.create(entity);
+    }
 
     @Override
     public void update(Course entity) {}

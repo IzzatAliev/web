@@ -8,6 +8,7 @@ import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.Course;
 import ua.com.alevel.persistence.type.CourseType;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -21,6 +22,7 @@ public class CourseDaoImpl implements CourseDao {
 
     private final JpaConfig jpaConfig;
 
+    private static final String CREATE_COURSE_QUERY = "insert into courses values(default, ?,?,?,?,?,?,?)";
     private static final String FIND_ALL_COURSES_QUERY = "select * from courses";
     private static final String FIND_COURSE_BY_ID_QUERY = "select * from courses where id = ";
     private static final String FIND_ALL_SIMPLE_COURSES_BY_STUDENT_ID_QUERY = "select id, course_name from courses left join student_course sc on courses.id = sc.course_id where sc.student_id = ";
@@ -34,7 +36,18 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void create(Course entity) {
-
+        try(PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_COURSE_QUERY)) {
+            preparedStatement.setTimestamp(1, new Timestamp(entity.getCreated().getTime()));
+            preparedStatement.setTimestamp(2, new Timestamp(entity.getUpdated().getTime()));
+            preparedStatement.setBoolean(3, entity.getVisible());
+            preparedStatement.setString(4, entity.getCourseName());
+            preparedStatement.setInt(5, entity.getCredit());
+            preparedStatement.setString(6, String.valueOf(entity.getCourseType()));
+            preparedStatement.setString(7, entity.getDescription());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("e = " + e.getMessage());
+        }
     }
 
     @Override

@@ -1,8 +1,8 @@
+drop table if exists student_course;
+drop table if exists management_course;
 drop table if exists students;
 drop table if exists courses;
 drop table if exists managements;
-drop table if exists student_course;
-drop table if exists management_course;
 
 create table students
 (
@@ -13,7 +13,7 @@ create table students
     visible    bit null,
     first_name varchar(255) not null,
     last_name  varchar(255) not null,
-    age       int not null
+    age       int   not null
 );
 
 create table courses

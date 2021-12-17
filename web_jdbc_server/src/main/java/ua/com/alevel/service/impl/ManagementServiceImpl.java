@@ -21,7 +21,9 @@ public class ManagementServiceImpl implements ManagementService {
     }
 
     @Override
-    public void create(Management entity) {}
+    public void create(Management entity) {
+        managementDao.create(entity);
+    }
 
     @Override
     public void update(Management entity) {}

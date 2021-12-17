@@ -27,7 +27,12 @@ public class ManagementFacadeImpl implements ManagementFacade {
     }
 
     @Override
-    public void create(ManagementRequestDto managementRequestDto) {}
+    public void create(ManagementRequestDto managementRequestDto) {
+        Management management = new Management();
+        management.setManagementName(managementRequestDto.getManagementName());
+        management.setStaffCount(managementRequestDto.getStaffCount());
+        managementService.create(management);
+    }
 
     @Override
     public void update(ManagementRequestDto managementRequestDto, Long id) {}

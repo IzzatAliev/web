@@ -6,6 +6,7 @@ import {CourseResponseDto} from "../model/course-response-dto";
 import {CourseRequestDto} from "../model/course-request-dto";
 import {Observable} from "rxjs";
 import {HttpParams} from "@angular/common/http";
+import {DataTableResponseDto} from "../model/data-table-response-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,20 @@ export class CourseApiService {
 
   private _apiUrl = environment.apiUrl + appConst.coursesPath;
 
+  datatable: DataTableResponseDto | undefined;
+
   constructor(private _apiService: ApiService<CourseRequestDto, CourseResponseDto>) { }
 
   loadAll(): Observable<CourseResponseDto[]> {
     return this._apiService.loadAll(this._apiUrl);
   }
 
-  loadAllByParams(): Observable<CourseResponseDto[]> {
+  loadAllByParams(page?: number | undefined, size?: number | undefined, sort?: string | undefined, order?:string | undefined ): Observable<CourseResponseDto[]> {
     const params: HttpParams = new HttpParams();
-    params.set('page',"")
-    params.set('sort',"")
-    params.set('order',"")
+    params.set('page',page!)
+    params.set('size',size!)
+    params.set('sort', sort!)
+    params.set('order',order!)
     return this._apiService.loadAllByParams(this._apiUrl, params);
   }
 

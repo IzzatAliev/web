@@ -28,7 +28,14 @@ public class CourseFacadeImpl implements CourseFacade {
     }
 
     @Override
-    public void create(CourseRequestDto courseRequestDto) {}
+    public void create(CourseRequestDto courseRequestDto) {
+        Course course = new Course();
+        course.setCourseName(courseRequestDto.getCourseName());
+        course.setCredit(courseRequestDto.getCredit());
+        course.setCourseType(courseRequestDto.getCourseType());
+        course.setDescription(courseRequestDto.getDescription());
+        courseService.create(course);
+    }
 
     @Override
     public void update(CourseRequestDto courseRequestDto, Long id) {}

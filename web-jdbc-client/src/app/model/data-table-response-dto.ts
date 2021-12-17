@@ -1,6 +1,7 @@
 export interface DataTableResponseDto {
 
-  pageSize: number;
+  page: number;
+  size: number;
   sort: string;
   order: string;
 }

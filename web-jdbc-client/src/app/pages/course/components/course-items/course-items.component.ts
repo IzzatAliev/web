@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseResponseDto} from "../../../../model/course-response-dto";
 import {CourseApiService} from "../../../../service/course-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {DataTableResponseDto} from "../../../../model/data-table-response-dto";
 
 @Component({
   selector: 'app-course-items',
@@ -11,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CourseItemsComponent implements OnInit {
 
   courses: CourseResponseDto[] | undefined;
+  datatable: DataTableResponseDto | undefined;
 
   constructor(private _courseApiService: CourseApiService,
               private _router: Router,
@@ -19,6 +21,7 @@ export class CourseItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this._loadAll();
+    this._loadAllByParams(this.datatable?.page,this.datatable?.size, this.datatable?.sort, this.datatable?.order);
   }
 
   loadById(id: number): void {
@@ -39,5 +42,11 @@ export class CourseItemsComponent implements OnInit {
     this._courseApiService.loadAll().subscribe(courses => {
       this.courses = courses;
     });
+  }
+
+  private _loadAllByParams(page: number | undefined, size: number | undefined, sort: string | undefined, order:string | undefined): void {
+    this._courseApiService.loadAllByParams(page,size,sort,order).subscribe(courses => {
+      this.courses = courses;
+    })
   }
 }

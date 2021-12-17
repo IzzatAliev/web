@@ -7,8 +7,10 @@ import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.Management;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,7 @@ public class ManagementDaoImpl implements ManagementDao {
 
     private final JpaConfig jpaConfig;
 
+    private static final String CREATE_MANAGEMENT_QUERY = "insert into managements values(default, ?,?,?,?,?)";
     private static final String FIND_ALL_BY_COURSE_ID = "select id, management_name from managements left join management_course mc on managements.id = mc.management_id where mc.course_id = ";
 
     public ManagementDaoImpl(JpaConfig jpaConfig) {
@@ -26,7 +29,18 @@ public class ManagementDaoImpl implements ManagementDao {
     }
 
     @Override
-    public void create(Management entity) {}
+    public void create(Management entity) {
+        try(PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_MANAGEMENT_QUERY)) {
+            preparedStatement.setTimestamp(1, new Timestamp(entity.getCreated().getTime()));
+            preparedStatement.setTimestamp(2, new Timestamp(entity.getUpdated().getTime()));
+            preparedStatement.setBoolean(3, entity.getVisible());
+            preparedStatement.setString(4, entity.getManagementName());
+            preparedStatement.setInt(5, entity.getStaffCount());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("e = " + e.getMessage());
+        }
+    }
 
     @Override
     public void update(Management entity) {}
@@ -79,8 +93,8 @@ public class ManagementDaoImpl implements ManagementDao {
 
         Management management = new Management();
         management.setId(id);
-        management.setStaffCount(staffCount);
         management.setManagementName(managementName);
+        management.setStaffCount(staffCount);
 
         return new ManagementResultSet(management, courseCount);
     }

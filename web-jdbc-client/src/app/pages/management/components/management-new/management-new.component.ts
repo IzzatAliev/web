@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ManagementNewComponent implements OnInit {
 
   managementForm = new FormGroup({
-    name: new FormControl(''),
+    managementName: new FormControl(''),
     staffCount: new FormControl('')
   });
 
