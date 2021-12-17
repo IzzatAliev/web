@@ -1,0 +1,27 @@
+<div>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav" style="text-align: center">
+      <li class="nav-item active">
+        <a class="navbar-brand" style="text-align: left; margin-left: 15px" href="#">JDBC DataTable</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/courses"  routerLinkActive="active">Courses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/students" routerLinkActive="active">Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/managements" routerLinkActive="active">Managements</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <br>
+    <div class="card">
+      <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</div>

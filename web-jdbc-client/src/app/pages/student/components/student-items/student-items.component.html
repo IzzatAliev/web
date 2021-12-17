@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Student List</h2>
+  </div>
+  <div class="panel-body">
+    <table id="example" class="table table-striped table-bordered table-sm row-border hover" cellspacing="0" width="100%">
+
+      <thead>
+      <tr>
+        <th>id <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>firstName <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>lastName <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>age <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>courseCount <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>details</th>
+        <th>delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.firstName}}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.courseCount }}</td>
+        <td><button type="button" class="btn btn-primary" (click)="loadById(student.id)">details</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteById(student.id)">delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary mt-2" (click)="addStudent()">add</button>
+  </div>
+</div>

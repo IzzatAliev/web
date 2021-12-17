@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Management List</h2>
+  </div>
+  <div class="panel-body">
+    <table id="example" class="table table-striped table-bordered table-sm row-border hover" cellspacing="0" width="100%">
+
+      <thead>
+      <tr>
+        <th>id <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>name <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>staff count <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>courseCount <i class="fa fa-sort" aria-hidden="true"></i> </th>
+        <th>details</th>
+        <th>delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let management of managements">
+        <td>{{ management.id }}</td>
+        <td>{{ management.managementName }}</td>
+        <td>{{ management.staffCount }}</td>
+        <td>{{ management.courseCount }}</td>
+        <td><button type="button" class="btn btn-primary" (click)="loadById(management.id)">details</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteById(management.id)">delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary mt-2" (click)="addManagement()">add</button>
+  </div>
+</div>

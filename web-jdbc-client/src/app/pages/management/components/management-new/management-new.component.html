@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-2 mt-2">
+      <div class="card-header">
+        New management
+      </div>
+      <div class="card-body">
+        <form [formGroup]="managementForm" (ngSubmit)="create()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="staffCount">Staff Count</label>
+            <input type="text" class="form-control" id="staffCount" aria-describedby="staffCount" formControlName="staffCount">
+          </div>
+          <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

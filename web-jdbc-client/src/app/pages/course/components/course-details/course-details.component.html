@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-2 mt-2">
+      <div class="card-header">
+        New course
+      </div>
+      <div class="card-body">
+        <div class="row mt-2">
+          <div class="col-6">
+            id
+          </div>
+          <div class="col-6">
+            {{ course?.id }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            course name
+          </div>
+          <div class="col-6">
+            {{ course?.courseName }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            credit
+          </div>
+          <div class="col-6">
+            {{ course?.credit }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            course type
+          </div>
+          <div class="col-6">
+            {{ course?.courseType }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            description
+          </div>
+          <div class="col-6">
+            {{ course?.description }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            managementCount
+          </div>
+          <div class="col-6">
+            {{ course?.managementCount }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            studentCount
+          </div>
+          <div class="col-6">
+            {{ course?.studentCount }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            created
+          </div>
+          <div class="col-6">
+            {{ course?.created | date: dateFormat }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            updated
+          </div>
+          <div class="col-6">
+            {{ course?.updated | date: dateFormat }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            show all students
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary btn-sm" (click)="showAllStudents()"><i class="fa fa-address-book-o" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            add new students
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary btn-sm" (click)="addNewStudents()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

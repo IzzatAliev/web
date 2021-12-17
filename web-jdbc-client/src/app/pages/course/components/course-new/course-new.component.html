@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-2 mt-2">
+      <div class="card-header">
+        New course
+      </div>
+      <div class="card-body">
+        <form [formGroup]="courseForm" (ngSubmit)="create()">
+          <div class="form-group">
+            <label for="courseName">Name</label>
+            <input type="text" class="form-control" id="courseName" aria-describedby="courseName" formControlName="courseName">
+          </div>
+          <div class="form-group">
+            <label for="credit">Credit</label>
+            <input type="text" class="form-control" id="credit" aria-describedby="credit" formControlName="credit">
+          </div>
+          <div class="form-group">
+            <label for="courseType">Course type</label>
+            <select id="courseType" class="form-select" formControlName="courseType">
+              <option [ngValue]="null">Select one...</option>
+              <option *ngFor="let type of courseTypeItems | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" aria-describedby="description" formControlName="description">
+          </div>
+          <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

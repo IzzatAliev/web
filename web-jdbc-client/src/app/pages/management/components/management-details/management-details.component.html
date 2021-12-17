@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-2 mt-2">
+      <div class="card-header">
+        New management
+      </div>
+      <div class="card-body">
+        <div class="row mt-2">
+          <div class="col-6">
+            id
+          </div>
+          <div class="col-6">
+            {{ management?.id }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            name
+          </div>
+          <div class="col-6">
+            {{ management?.managementName }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            staff count
+          </div>
+          <div class="col-6">
+            {{ management?.staffCount }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            course count
+          </div>
+          <div class="col-6">
+            {{ management?.courseCount }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            created
+          </div>
+          <div class="col-6">
+            {{ management?.created | date: dateFormat }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            updated
+          </div>
+          <div class="col-6">
+            {{ management?.updated | date: dateFormat }}
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            show all courses
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary btn-sm" (click)="showAllCourses()"><i class="fa fa-address-book-o" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            add new courses
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary btn-sm" (click)="addNewCourses()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
